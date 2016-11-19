@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161118231830) do
+ActiveRecord::Schema.define(version: 20161119032001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,40 @@ ActiveRecord::Schema.define(version: 20161118231830) do
   add_index "ahoy_events", ["name", "time"], name: "index_ahoy_events_on_name_and_time", using: :btree
   add_index "ahoy_events", ["user_id", "name"], name: "index_ahoy_events_on_user_id_and_name", using: :btree
   add_index "ahoy_events", ["visit_id", "name"], name: "index_ahoy_events_on_visit_id_and_name", using: :btree
+
+  create_table "users", force: :cascade do |t|
+    t.string   "vivieu_name",            default: "",    null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
+    t.text     "description",            default: ""
+    t.string   "facebook",               default: ""
+    t.string   "twitter",                default: ""
+    t.string   "patreon",                default: ""
+    t.string   "google_plus",            default: ""
+    t.string   "personal_website",       default: ""
+    t.string   "uid",                    default: ""
+    t.string   "avatar",                 default: ""
+    t.string   "token",                  default: ""
+    t.string   "refresh_token",          default: ""
+    t.string   "locale",                 default: "en"
+    t.boolean  "admin",                  default: false
+    t.boolean  "reviewer",               default: false
+    t.boolean  "toc",                    default: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,     null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["vivieu_name"], name: "index_users_on_vivieu_name", unique: true, using: :btree
 
   create_table "visits", force: :cascade do |t|
     t.string   "visit_token"

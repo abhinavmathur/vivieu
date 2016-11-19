@@ -1,1 +1,1 @@
-Mime::Type.register 'text/html', :amp
+#Mime::Type.register 'text/html', :amp

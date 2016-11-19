@@ -22,6 +22,10 @@
 en:
   welcome: "Welcome to Vivieu ! It is the first video focused, user driven review website which caters to products
   bought from Amazon. Its free and easy to join !"
+  navbar:
+    about: 'About'
+    logout: 'Logout'
+    login: 'One Click login/join'
   meta:
     title: "Vivieu - Watch video reviews made by people like you"
     description: "Vivieu.com is a video focused review website. Submit videos of products
