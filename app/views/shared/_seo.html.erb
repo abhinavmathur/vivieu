@@ -1,0 +1,11 @@
+<meta charset="utf-8">
+<% if content_for?(:page_title) %>
+    <title><%= yield(:page_title) %> | <%= t('meta.title') %></title>
+<% else %>
+    <title><%= t('meta.title') %></title>
+<% end %>
+<% if content_for?(:page_description) %>
+    <meta name="Description" CONTENT="<%= yield(:page_description) %>">
+<% else %>
+    <meta name="Description" CONTENT="<%= t('meta.description') %>">
+<% end %>

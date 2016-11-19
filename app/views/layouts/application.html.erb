@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Vivieu</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= render 'shared/seo' %>
+  <%= render 'shared/javascripts' %>
+  <%= render 'shared/stylesheets' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+<%= render 'shared/navbar' %>
+<%= render 'shared/flash_messages' %>
+<div class="container-fluid">
+  <%= yield %>
+</div>
 </body>
 </html>

@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: vivieu_production
-  username: vivieu
-  password: <%= ENV['VIVIEU_DATABASE_PASSWORD'] %>
+  username: <%= ENV["VIVIEU_DATABASE_USERNAME"] %>
+  password: <%= ENV["VIVIEU_DATABASE_PASSWORD"] %>

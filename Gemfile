@@ -90,5 +90,9 @@ gem 'searchjoy'
 gem 'country_select'
 gem 'twitter-typeahead-rails', :git => 'https://github.com/yourabi/twitter-typeahead-rails.git'
 gem 'countries', :require => 'countries/global'
+gem 'rails-i18n', '~> 4.0.0'
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootswatch-rails'
+
 
 
