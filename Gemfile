@@ -75,7 +75,6 @@ gem 'simple_form'
 gem 'geocoder'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
-gem 'client_side_validations'
 gem 'yt'
 gem 'carrierwave'
 gem 'sidekiq'
@@ -93,6 +92,9 @@ gem 'countries', :require => 'countries/global'
 gem 'rails-i18n', '~> 4.0.0'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bootswatch-rails'
+gem 'client_side_validations'
+gem 'client_side_validations-simple_form'
+
 
 
 

@@ -14,5 +14,7 @@
 //= require ahoy
 //= require bootstrap-sprockets
 //= require jquery_ujs
+//= require rails.validations
+//= require rails.validations.simple_form
 //= require turbolinks
 //= require_tree .

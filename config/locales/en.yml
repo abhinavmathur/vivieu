@@ -25,7 +25,9 @@ en:
   navbar:
     about: 'About'
     logout: 'Logout'
-    login: 'One Click login/join'
+    login: 'Login'
+    become_a_reviewer: 'Become a Reviewer'
+    settings: 'Settings'
   meta:
     title: "Vivieu - Watch video reviews made by people like you"
     description: "Vivieu.com is a video focused review website. Submit videos of products

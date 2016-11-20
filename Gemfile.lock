@@ -136,6 +136,9 @@ GEM
       jquery-rails (>= 3.1.2, < 5.0.0)
       js_regex (~> 1.0, >= 1.0.19)
       rails (>= 4.0.0, < 4.3.0)
+    client_side_validations-simple_form (3.3.1)
+      client_side_validations (~> 4.2.9)
+      simple_form (~> 3.3)
     cocoon (1.2.9)
     code_analyzer (0.4.7)
       sexp_processor
@@ -448,6 +451,7 @@ DEPENDENCIES
   carrierwave
   chromedriver-helper
   client_side_validations
+  client_side_validations-simple_form
   cocoon
   coffee-rails (~> 4.1.0)
   countries
