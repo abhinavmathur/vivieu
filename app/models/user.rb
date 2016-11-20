@@ -41,6 +41,9 @@ class User < ActiveRecord::Base
   validates :vivieu_name, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
 
+  has_many :affiliate_countries
+  accepts_nested_attributes_for :affiliate_countries, reject_if: proc { |attributes| attributes['default_affiliate_tag'].blank? }, allow_destroy: true
+
   def self.from_omniauth(auth)
     where( uid: auth.uid, email: auth.info.email).first_or_create do |user|
       user.vivieu_name = auth.info.email.to_s.split('@')[0].to_s + "'s reviews"

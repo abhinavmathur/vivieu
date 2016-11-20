@@ -1,0 +1,11 @@
+<%= simple_form_for user, url: "/users/#{user.id}", html: { method: :put} do |f| %>
+    <%= f.input :vivieu_name, as: :hidden, input_html: { value: user.vivieu_name } %>
+    <%= f.input :email, as: :hidden, input_html: {  value: user.email } %>
+    <div class="affiliate_countries">
+      <%= f.simple_fields_for :affiliate_countries do |ff| %>
+          <%= ff.input :country %>
+          <%= link_to_add_association 'Add Affiliate', f, :affiliate_countries %>
+      <% end %>
+    </div>
+    <%= f.button :submit, 'Update Affiliate Countries' %>
+<% end %>

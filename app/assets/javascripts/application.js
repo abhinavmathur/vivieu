@@ -16,5 +16,6 @@
 //= require jquery_ujs
 //= require rails.validations
 //= require rails.validations.simple_form
+//= require cocoon
 //= require turbolinks
 //= require_tree .

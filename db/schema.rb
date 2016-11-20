@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161119032001) do
+ActiveRecord::Schema.define(version: 20161120040337) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "affiliate_countries", force: :cascade do |t|
+    t.string   "country",               default: ""
+    t.string   "default_affiliate_tag", default: ""
+    t.string   "tracker",               default: ""
+    t.integer  "user_id"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
+
+  add_index "affiliate_countries", ["user_id"], name: "index_affiliate_countries_on_user_id", using: :btree
 
   create_table "ahoy_events", force: :cascade do |t|
     t.integer  "visit_id"
@@ -94,4 +105,5 @@ ActiveRecord::Schema.define(version: 20161119032001) do
   add_index "visits", ["user_id"], name: "index_visits_on_user_id", using: :btree
   add_index "visits", ["visit_token"], name: "index_visits_on_visit_token", unique: true, using: :btree
 
+  add_foreign_key "affiliate_countries", "users"
 end
