@@ -30,7 +30,7 @@
     <% end %>
   </div>
   <div class="tab-pane fade" id="affiliate-settings">
-    <h2 class="text-center">Affiliate Settings</h2>
+    <h2 class="text-center">Amazon Affiliate Settings</h2>
     <% user = User.find(current_user.id) %>
     <% user.affiliate_countries.build unless user.affiliate_countries.present? %>
 
