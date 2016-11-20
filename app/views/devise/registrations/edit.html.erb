@@ -41,8 +41,10 @@
         <div class="affiliate_countries">
           <%= f.simple_fields_for :affiliate_countries do |ff| %>
               <%= render 'devise/registrations/affiliate_country_fields', f: ff %>
-              <%= link_to_add_association 'Add Affiliate', f, :affiliate_countries, class: 'btn btn-success btn-sm' %>
           <% end %>
+          <div class="text-center">
+            <%= link_to_add_association 'Add Affiliate', f, :affiliate_countries, class: 'btn btn-success btn-sm' %>
+          </div>
         </div>
         <br>
         <%= f.button :submit, 'Update Affiliate Countries' %>
@@ -53,6 +55,8 @@
   <div class="tab-pane fade" id="cancel-account">
     <h3>Cancel my account</h3>
 
-    <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+    <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name),
+                            data: { confirm: "Are you sure is want to delete your account ? his action is irreversible",
+                                    verify: "#{current_user.email}", verify_text: 'Type your email to confirm'}, method: :delete %></p>
   </div>
 </div>

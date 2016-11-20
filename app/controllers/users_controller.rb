@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def update
     if @user.update(user_params)
       flash[:success] = "Amazon affiliate countries were
-       successfully updated. You can click <a href='#{request.domain}/users/edit'>here</a> to go back to the settings page"
+       successfully updated. You can click <a href='/users/edit'>here</a> to go back to the settings page"
       redirect_to root_path
     else
       flash[:danger] = 'Please check the form again'

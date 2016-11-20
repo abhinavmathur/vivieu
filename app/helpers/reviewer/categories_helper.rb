@@ -1,0 +1,2 @@
+module Reviewer::CategoriesHelper
+end

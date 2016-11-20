@@ -93,6 +93,8 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bootswatch-rails'
 gem 'client_side_validations'
 gem 'client_side_validations-simple_form'
+gem 'data-confirm-modal'
+gem 'font-awesome-rails'
 
 
 

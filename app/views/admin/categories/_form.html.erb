@@ -1,0 +1,5 @@
+<%= simple_form_for [:admin, @category] , validate: true do |f| %>
+    <%= f.input :title, presence: true, autofocus: true %>
+    <%= f.input :description %>
+    <%= f.submit 'Submit Category', class: 'btn btn-primary' %>
+<% end %>

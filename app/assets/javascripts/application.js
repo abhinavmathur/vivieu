@@ -17,5 +17,12 @@
 //= require rails.validations
 //= require rails.validations.simple_form
 //= require cocoon
+//= require data-confirm-modal
 //= require turbolinks
 //= require_tree .
+
+dataConfirmModal.setDefaults({
+    title: 'Confirm your action',
+    commit: 'Continue',
+    cancel: 'Cancel'
+});

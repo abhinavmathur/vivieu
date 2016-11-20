@@ -1,0 +1,26 @@
+<h2 class="text-center">Categories</h2>
+
+<div class="list-group">
+  <% @categories.each do |category| %>
+      <div class="row">
+        <div class="col-md-8">
+          <%= link_to reviewer_category_path(category), class: 'list-group-item' do %>
+              <h4 class="list-group-item-heading"><%= category.title %></h4>
+              <p class="list-group-item-text"><%= category.description %></p>
+          <% end %>
+          <br>
+        </div>
+        <div class="col-md-4">
+          <%= link_to 'Edit Category', edit_admin_category_path(category), class: 'btn btn-default' %>
+          <%= link_to 'Delete Category', admin_category_path(category),
+                      class: 'btn btn-danger',
+                      method: :delete,
+                      data: { confirm: "Delete this category ? This action is irreversible",
+                              verify: "#{category.title}", verify_text: 'Enter category name'}%>
+        </div>
+      </div>
+
+  <% end %>
+</div>
+
+

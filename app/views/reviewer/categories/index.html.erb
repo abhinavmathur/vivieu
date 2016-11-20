@@ -1,0 +1,9 @@
+<h2 class="text-center">All Categories</h2>
+<ul>
+  <% @categories.each do |category| %>
+  <li>
+    <%= link_to category.title, reviewer_category_path(category) %>
+  </li>
+  <% end %>
+</ul>
+

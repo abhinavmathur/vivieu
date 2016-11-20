@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Dashboard | Vivieu</title>
+  <%= render 'shared/javascripts' %>
+  <%= render 'shared/stylesheets' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<%= render 'shared/navbar' %>
+<div class="row">
+  <div class="col-sm-12 col-md-3">
+    <%= render 'shared/admin/navbar' %>
+  </div>
+  <div class="com-sm-12 col-md-9">
+    <%= render 'shared/flash_messages' %>
+    <%= yield %>
+  </div>
+</div>
+<%= render 'shared/login_modal' %>
+</body>
+</html>
