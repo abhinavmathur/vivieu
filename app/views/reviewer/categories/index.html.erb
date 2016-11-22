@@ -1,9 +1,72 @@
-<h2 class="text-center">All Categories</h2>
-<ul>
-  <% @categories.each do |category| %>
-  <li>
-    <%= link_to category.title, reviewer_category_path(category) %>
-  </li>
-  <% end %>
-</ul>
+<h2 class="text-center">Categories</h2>
 
+<div class="row">
+  <div class="col-md-3 col-md-offset-9">Select Order</div>
+  <div class="col-sm-12 col-md-3 col-md-offset-9">
+    <select class="form-control" name='order-select' id="order-select">
+      <option value="title-asc" <%= 'selected' if params[:order] == 'title-asc' %>>Name Ascending</option>
+      <option value="title-desc" <%= 'selected' if params[:order] == 'title-desc' %>>Name Descending</option>
+      <option value="tag-asc" <%= 'selected' if params[:order] == 'tag-desc' %>>Tag Count Ascending</option>
+      <option value="tag-desc" <%= 'selected' if params[:order] == 'tag-desc' %>>Tag Count Descending</option>
+      <option value="pop-asc" <%= 'selected' if params[:order] == 'pop-asc' %>>Popularity Increasing</option>
+      <option value="pop-desc" <%= 'selected' if params[:order] == 'pop-desc' %>>Popularity Decreasing</option>
+      <option value="rev-asc" <%= 'selected' if params[:order] == 'rev-asc' %>>Review Count Ascending</option>
+      <option value="rev-desc" <%= 'selected' if params[:order] == 'rev-desc' %>>Review Count Descending</option>
+    </select>
+  </div>
+</div>
+
+
+<table class="table table-striped table-hover ">
+  <thead>
+
+  <tr>
+    <th>Category Name</th>
+    <th>Number of Tags</th>
+    <th>Number of Reviews</th>
+    <th>Visit Category Page</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @categories.each do |category| %>
+  <tr>
+    <td><%= category.title %></td>
+    <td><%= category.tags.count %></td>
+    <td>Coming Soon</td>
+    <td><%= link_to 'Visit Category Page', reviewer_category_path(category), class: 'btn btn-default' %></td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<script type="text/javascript" charset="utf-8">
+  $('select[name=order-select]').change(function(e)
+  {
+    if($('select[name=order-select]').val() == 'title-desc')
+    {
+      window.location.assign('/reviewer/categories?order=title-desc')
+    }
+    else if($('select[name=order-select]').val() == 'title-asc')
+    {
+      window.location.assign('/reviewer/categories?order=title-asc')
+    }
+    else if($('select[name=order-select]').val() == 'tag-asc')
+    {
+      window.location.assign('/reviewer/categories?order=tag-asc')
+    }
+    else if($('select[name=order-select]').val() == 'tag-desc')
+    {
+      window.location.assign('/reviewer/categories?order=tag-desc')
+    }
+    else if($('select[name=order-select]').val() == 'pop-asc')
+    {
+      window.location.assign('/reviewer/categories?order=pop-asc')
+    }
+    else if($('select[name=order-select]').val() == 'pop-desc')
+    {
+      window.location.assign('/reviewer/categories?order=pop-desc')
+    }
+
+
+  })
+</script>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161120192710) do
+ActiveRecord::Schema.define(version: 20161121222224) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20161120192710) do
     t.string   "slug"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.integer  "tags_count",  default: 0,  null: false
   end
 
   add_index "categories", ["slug"], name: "index_categories_on_slug", unique: true, using: :btree
@@ -63,6 +64,17 @@ ActiveRecord::Schema.define(version: 20161120192710) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "title",       default: ""
+    t.integer  "views",       default: 0
+    t.integer  "owner"
+    t.integer  "category_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "tags", ["category_id"], name: "index_tags_on_category_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "vivieu_name",            default: "",    null: false
@@ -131,4 +143,5 @@ ActiveRecord::Schema.define(version: 20161120192710) do
   add_index "visits", ["visit_token"], name: "index_visits_on_visit_token", unique: true, using: :btree
 
   add_foreign_key "affiliate_countries", "users"
+  add_foreign_key "tags", "categories"
 end

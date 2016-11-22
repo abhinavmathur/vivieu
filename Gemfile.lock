@@ -49,6 +49,9 @@ GEM
       activerecord (>= 4.0)
     addressable (2.5.0)
       public_suffix (~> 2.0, >= 2.0.2)
+    after_commit_action (1.0.1)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
     ahoy_matey (1.5.3)
       addressable
       browser (~> 2.0)
@@ -147,6 +150,10 @@ GEM
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.2)
     connection_pool (2.2.1)
+    counter_culture (1.0.0)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      after_commit_action (~> 1.0)
     countries (1.2.5)
       currencies (~> 0.4.2)
       i18n_data (~> 0.7.0)
@@ -260,7 +267,7 @@ GEM
     orm_adapter (0.5.0)
     pg (0.19.0)
     public_suffix (2.0.4)
-    puma (3.6.0)
+    puma (3.6.1)
     pundit (1.1.0)
       activesupport (>= 3.0.0)
     quiet_assets (1.1.0)
@@ -452,6 +459,7 @@ DEPENDENCIES
   client_side_validations-simple_form
   cocoon
   coffee-rails (~> 4.1.0)
+  counter_culture (~> 1.0)
   countries
   country_select
   data-confirm-modal

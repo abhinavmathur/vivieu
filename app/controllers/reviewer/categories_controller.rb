@@ -1,7 +1,8 @@
 class Reviewer::CategoriesController < ApplicationController
 
   def index
-    @categories = Category.order('title desc')
+    #raise params[:order].to_s.inspect
+    @categories = Category.select_order(params[:order].to_s)
   end
 
   def show
