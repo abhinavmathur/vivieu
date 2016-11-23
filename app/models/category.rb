@@ -17,6 +17,10 @@ class Category < ActiveRecord::Base
   friendly_id :title, use: :slugged
   has_many :tags, dependent: :destroy
 
+  #validations
+  validates_presence_of :title
+  validates_uniqueness_of :title
+
   def should_generate_new_friendly_id?
     title_changed?
   end

@@ -1,0 +1,19 @@
+<div class="modal" id="tags-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title text-center">Create a Tag</h4>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for [:admin, tag], validate: true, method: :post do |f| %>
+            <%= f.input :title, required: true,autofocus: true %>
+            <%= f.association :category, required: true %>
+            <%= f.input :owner, as: :hidden, input_html: { value: current_user.id} %>
+            <%= f.button :submit, class: 'btn btn-primary' %>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>

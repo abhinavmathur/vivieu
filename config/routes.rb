@@ -12,8 +12,10 @@ Rails.application.routes.draw do
   authenticate :user, lambda { |u| u.admin? } do
     namespace :admin do
       root 'dashboards#index'
+      get '/tags' => 'dashboards#tags'
+      get '/manage_tags' => 'dashboards#manage_tags'
       resources :categories
-
+      resources :tags, except: [:show, :new, :index]
     end
   end
 end

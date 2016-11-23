@@ -8,15 +8,17 @@
 </head>
 <body>
 <%= render 'shared/navbar' %>
-<div class="row">
-  <div class="col-sm-12 col-md-3">
-    <%= render 'shared/admin/navbar' %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-md-3">
+      <%= render 'shared/admin/navbar' %>
+    </div>
+    <div class="com-sm-12 col-md-9">
+      <%= render 'shared/flash_messages' %>
+      <%= yield %>
+    </div>
   </div>
-  <div class="com-sm-12 col-md-9">
-    <%= render 'shared/flash_messages' %>
-    <%= yield %>
-  </div>
+  <%= render 'shared/login_modal' %>
 </div>
-<%= render 'shared/login_modal' %>
 </body>
 </html>

@@ -16,4 +16,5 @@ class Tag < ActiveRecord::Base
   counter_culture :category
 
   validates_uniqueness_of :title
+  validates_presence_of :title, :owner, :category_id
 end

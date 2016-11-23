@@ -1,0 +1,12 @@
+<tr class="active" id="tag-<%= tag.id %>">
+  <th class="tag-title-<%= tag.id %>"><%= tag.title %></th>
+  <th class="tag-category-<%= tag.id %>"><%= tag.category.title %></th>
+  <th class="tag-owner-<%= tag.id %>"><%= truncate(User.find(tag.owner).vivieu_name, length: 10) %></th>
+  <th class="tag-review-<%= tag.id %>">Coming Soon</th>
+  <th>
+    <%= link_to edit_admin_tag_path(tag), class: 'btn btn-default btn-xs' do %>
+        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        <% end %>
+  </th>
+</tr>
+
