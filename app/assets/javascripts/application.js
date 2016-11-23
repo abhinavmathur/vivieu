@@ -18,8 +18,11 @@
 //= require rails.validations.simple_form
 //= require cocoon
 //= require data-confirm-modal
+//= require bootstrap-tagsinput
 //= require turbolinks
 //= require_tree .
+
+//Global Javascript Settings Go Here
 
 dataConfirmModal.setDefaults({
     title: 'Confirm your action',

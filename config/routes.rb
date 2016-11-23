@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   authenticate :user, lambda { |u| u.reviewer? || u.admin?} do
     namespace :reviewer do
       resources :categories, only: [:index, :show]
+      resources :tags, only: :create
     end
   end
 
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
     namespace :admin do
       root 'dashboards#index'
       resources :categories
+
     end
   end
 end

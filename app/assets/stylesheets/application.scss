@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require font-awesome
+ *= require jquery.tagsinput
  *= require_self
  */
 
@@ -19,4 +20,5 @@
 @import "bootswatch/cosmo/variables";
 @import "bootstrap";
 @import "bootswatch/cosmo/bootswatch";
+@import "bootstrap-tagsinput";
 @import "base.scss";

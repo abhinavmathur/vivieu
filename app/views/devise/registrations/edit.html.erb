@@ -31,11 +31,12 @@
   </div>
   <div class="tab-pane fade" id="affiliate-settings">
     <h2 class="text-center">Amazon Affiliate Settings</h2>
+    <br>
     <% user = User.find(current_user.id) %>
     <% user.affiliate_countries.build unless user.affiliate_countries.present? %>
 
+
     <%= simple_form_for user, url: "/users/#{user.id}", html: { method: :put} do |f| %>
-        <div class="row"></div>
         <%= f.input :vivieu_name, as: :hidden, input_html: { value: user.vivieu_name } %>
         <%= f.input :email, as: :hidden, input_html: {  value: user.email } %>
         <div class="affiliate_countries">
@@ -49,14 +50,27 @@
         <br>
         <%= f.button :submit, 'Update Affiliate Countries' %>
     <% end %>
+
   </div>
 
 
   <div class="tab-pane fade" id="cancel-account">
-    <h3>Cancel my account</h3>
+    <h2 class="text-center">Account Cancellation</h2>
+    <br>
+    <div class="row">
+      <div class="col-sm-12 col-md-6 col-md-offset-3">
+        <p>Use the link below to cancel your account. Though you may delete your account but if you have any reviews, they
+          will not be deleted. After deleting your account, you will not have any access to your previous reviews.</p>
+      </div>
+    </div>
 
-    <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name),
-                            data: { confirm: "Are you sure is want to delete your account ? his action is irreversible",
-                                    verify: "#{current_user.email}", verify_text: 'Type your email to confirm'}, method: :delete %></p>
+    <div class="row">
+      <div class="text-center">
+        <p><%= link_to "Cancel my account", registration_path(resource_name),
+                       data: { confirm: "Are you sure you want to delete your account ? This action is irreversible",
+                               verify: "#{current_user.email}", verify_text: 'Type your email to confirm'}, method: :delete,
+                       class: 'btn btn-danger btn-sm'%></p>
+      </div>
+    </div>
   </div>
 </div>

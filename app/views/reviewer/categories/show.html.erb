@@ -1,3 +1,61 @@
 <h2 class="text-center"><%= @category.title %></h2>
 <!--todo pundit-->
 <%= link_to 'Edit Category', edit_admin_category_path(@category), class: 'btn btn-primary' %>
+
+<h3 class="text-center">Top Tags</h3>
+<div class="row">
+  <!--todo-->
+</div>
+
+<%= controller_name %> <%= action_name %>
+
+<h3 class="text-center">All Tag</h3>
+<div class="container">
+  <div class="row">
+    <% if @tags.empty? %>
+        <h4 class="text-center text-warning">There are no tags in this category</h4>
+    <% else %>
+        <ul class="nav nav-pills tag-collection">
+          <% @tags.each do |tag| %>
+              <li class="active category-tags"><a href="#"><%= tag.title %> <span class="badge">0</span></a></li>
+          <% end %>
+        </ul>
+    <% end %>
+  </div>
+</div>
+
+
+<h3 class="text-center">Add tags</h3>
+<div class="row">
+  <div class="col-sm-12 col-md-6 col-md-offset-3">
+    <p>You can add one or more tags at the same time. Make sure that your tags do not have spelling mistakes. Once
+      the tag is added, you cannot delete them. If you still made some errors, please contact the admin to rectify them.
+      Thank you for contributing to this website !</p>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-sm-12 col-md-6 col-md-offset-3">
+    <h4>
+      <input id="tag-field" data-role="tagsinput">
+    </h4>
+    <div class="text-center">
+      <button type="button" class="btn btn-primary btn-lg" onclick='populate_tags()' data-toggle="modal" data-target="#confirm-tag-modal">
+        Add Tags
+      </button>
+    </div>
+  </div>
+</div>
+
+<%= render 'reviewer/categories/shared/confirm_tag' %>
+
+<script type="text/javascript" charset="utf-8">
+  function create_tag(){
+    var tags = $('#tag-field').val();
+    $.ajax({
+      method: 'POST',
+      url: '/reviewer/tags',
+      data: { category_id: '<%= @category.id %>', tag_box: tags}
+    })
+  }
+</script>

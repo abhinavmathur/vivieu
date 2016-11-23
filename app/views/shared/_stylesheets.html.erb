@@ -1,2 +1,6 @@
 <link href="https://fonts.googleapis.com/css?family=Baloo+Da" rel="stylesheet">
-<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+<% if controller_name == 'categories' && action_name == 'show' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => false %>
+<% else %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+<% end %>

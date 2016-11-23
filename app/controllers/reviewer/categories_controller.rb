@@ -7,5 +7,6 @@ class Reviewer::CategoriesController < ApplicationController
 
   def show
     @category = Category.friendly.find(params[:id])
+    @tags = @category.tags
   end
 end

@@ -96,6 +96,7 @@ gem 'client_side_validations-simple_form'
 gem 'data-confirm-modal'
 gem 'font-awesome-rails'
 gem 'counter_culture', '~> 1.0'
+gem 'tagsinput-rails'
 
 
 
