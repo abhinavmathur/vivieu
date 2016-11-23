@@ -17,4 +17,10 @@ class Tag < ActiveRecord::Base
 
   validates_uniqueness_of :title
   validates_presence_of :title, :owner, :category_id
+
+  def self.search(search)
+    where("title ILIKE ? ", "%#{search}%")
+  end
+
 end
+

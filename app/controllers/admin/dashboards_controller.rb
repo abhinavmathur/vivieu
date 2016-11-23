@@ -8,6 +8,9 @@ class Admin::DashboardsController < ApplicationController
   end
 
   def manage_tags
+    if params[:search].present?
+      return @tags = Tag.search(params[:search].to_s)
+    end
     if params[:category].present?
       @tags = Category.friendly.find(params[:category].to_s.split(' ').join('-').downcase).tags
     else
