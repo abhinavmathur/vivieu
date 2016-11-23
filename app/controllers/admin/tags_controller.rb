@@ -8,7 +8,7 @@ class Admin::TagsController < Admin::DashboardsController
       flash[:success] = 'Tag was created successfully'
       respond_to do |format|
         format.html {
-          redirect_to admin_manage_tags_path
+          redirect_to admin_manage_tags_path(category: @tag.category.title)
         }
         format.js
       end
@@ -28,13 +28,16 @@ class Admin::TagsController < Admin::DashboardsController
       redirect_to admin_tags_path
     else
       flash[:danger] = @tag.errors.full_messages.to_sentence
-      redirect_to admin_tags_path
+      redirect_to admin_manage_tags_path(category: @tag.category.title)
     end
 
   end
 
   def destroy
-
+    category = @tag.category.title
+    @tag.destroy
+    flash[:success] = 'Tag was deleted'
+    redirect_to admin_manage_tags_path(category: category)
   end
 
   private
