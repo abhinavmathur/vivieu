@@ -25,10 +25,10 @@ class Admin::TagsController < Admin::DashboardsController
   def update
     if @tag.update(tag_params)
       flash[:success] = 'Tag was edited successfully'
-      redirect_to admin_tags_path
+      redirect_to admin_tags_path(category: @tag.category.title)
     else
       flash[:danger] = @tag.errors.full_messages.to_sentence
-      redirect_to admin_manage_tags_path(category: @tag.category.title)
+      redirect_to admin_manage_tags_path
     end
 
   end
