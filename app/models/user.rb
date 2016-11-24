@@ -30,19 +30,47 @@
 #  last_sign_in_ip        :inet
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  slug                   :string
 #
 
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+
+  #general
+  #############################################################################################
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:google_oauth2]
 
-  validates :vivieu_name, presence: true, uniqueness: true
-  validates :email, presence: true, uniqueness: true
+  extend FriendlyId
+  friendly_id :vivieu_name, use: :slugged
+  #############################################################################################
 
-  has_many :affiliate_countries
+  #callbacks
+  #############################################################################################
+  before_destroy :update_tags
+  #############################################################################################
+
+  #validations
+  #############################################################################################
+  validates_presence_of :vivieu_name, :email
+  validates_uniqueness_of :vivieu_name, :email
+  #############################################################################################
+
+  #relationships
+  #############################################################################################
+  has_many :affiliate_countries, dependent: :destroy
+  has_many :tags, dependent: :nullify, :foreign_key => 'owner_id'
   accepts_nested_attributes_for :affiliate_countries, reject_if: proc { |attributes| attributes['default_affiliate_tag'].blank? }, allow_destroy: true
+  #############################################################################################
+
+  #methods
+  #############################################################################################
+  def update_tags
+    if self.tags.any?
+      self.tags.each do |tag|
+        tag.update(owner: User.first)
+      end
+    end
+  end
 
   def self.from_omniauth(auth)
     where( uid: auth.uid, email: auth.info.email).first_or_create do |user|
@@ -61,7 +89,20 @@ class User < ActiveRecord::Base
     end
   end
 
+  def self.roles(user)
+    if user.reviewer?
+      return 'Reviewer'
+    elsif user.admin?
+      return 'Admin'
+    else
+      'Normal'
+    end
+  end
 
+  def self.search(search)
+    where("vivieu_name ILIKE ? OR email ILIKE ?", "%#{search}%", "%#{search}")
+  end
+  #############################################################################################
 end
 
 

@@ -43,7 +43,7 @@ class Admin::TagsController < Admin::DashboardsController
   private
 
   def tag_params
-    params.require(:tag).permit(:title, :category_id, :owner)
+    params.require(:tag).permit(:title, :category_id, :owner_id)
   end
 
   def set_tag

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161121222224) do
+ActiveRecord::Schema.define(version: 20161124043022) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,13 +68,14 @@ ActiveRecord::Schema.define(version: 20161121222224) do
   create_table "tags", force: :cascade do |t|
     t.string   "title",       default: ""
     t.integer  "views",       default: 0
-    t.integer  "owner"
     t.integer  "category_id"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.integer  "owner_id"
   end
 
   add_index "tags", ["category_id"], name: "index_tags_on_category_id", using: :btree
+  add_index "tags", ["owner_id"], name: "index_tags_on_owner_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "vivieu_name",            default: "",    null: false
@@ -104,10 +105,12 @@ ActiveRecord::Schema.define(version: 20161121222224) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
+    t.string   "slug"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["slug"], name: "index_users_on_slug", unique: true, using: :btree
   add_index "users", ["vivieu_name"], name: "index_users_on_vivieu_name", unique: true, using: :btree
 
   create_table "visits", force: :cascade do |t|
@@ -144,4 +147,5 @@ ActiveRecord::Schema.define(version: 20161121222224) do
 
   add_foreign_key "affiliate_countries", "users"
   add_foreign_key "tags", "categories"
+  add_foreign_key "tags", "users", column: "owner_id"
 end

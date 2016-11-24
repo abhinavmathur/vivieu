@@ -1,0 +1,16 @@
+<h2 class="text-center text-primary">Edit Basic User Information</h2>
+<%= simple_form_for [:admin, @user], validate: true do |f| %>
+    <%= f.input :vivieu_name, autofocus: true %>
+    <%= f.input :email %>
+    <%= f.input :description %>
+    <%= f.input :facebook %>
+    <%= f.input :twitter %>
+    <%= f.input :patreon %>
+    <%= f.input :google_plus %>
+    <%= f.input :personal_website %>
+    <%= f.input :locale %>
+    <%= f.input :admin, as: :boolean %>
+    <%= f.input :reviewer, as: :boolean %>
+    <%= f.button :submit %>
+    <%= link_to 'Back', :back, class: 'btn btn-primary' %>
+<% end %>

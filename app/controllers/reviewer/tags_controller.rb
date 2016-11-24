@@ -6,7 +6,7 @@ class Reviewer::TagsController < ApplicationController
     tags = params[:tag_box]
     tag_array = tags.split(',')
     tag_array.each do |tag|
-      tags = Tag.create(title: tag, owner: current_user.id, category_id: category_id)
+      tags = Tag.create(title: tag, owner: current_user, category_id: category_id)
       unless tags.errors.any?
         final_tags.push(tags.title)
       end

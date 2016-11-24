@@ -5,10 +5,10 @@
 #  id          :integer          not null, primary key
 #  title       :string           default("")
 #  views       :integer          default(0)
-#  owner       :integer
 #  category_id :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  owner_id    :integer
 #
 
 FactoryGirl.define do

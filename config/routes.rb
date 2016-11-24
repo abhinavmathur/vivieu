@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       get '/manage_tags' => 'dashboards#manage_tags'
       resources :categories
       resources :tags, except: [:show, :new, :index]
+      resources :users
     end
   end
 end
