@@ -17,9 +17,10 @@
   </thead>
   <tbody>
   <% @users.each do |user| %>
-      <tr>
+  <% role = User.roles(user) %>
+      <tr class="<%= 'text-warning' if role == 'Reviewer' %>">
         <td><%= user.vivieu_name %></td>
-        <td><%= User.roles(user) %></td>
+        <td><%= role %></td>
         <td>
           <%= link_to admin_user_path(user), class: 'btn btn-default btn-xs' do %>
               <i class="fa fa-user-circle-o" aria-hidden="true"></i>
