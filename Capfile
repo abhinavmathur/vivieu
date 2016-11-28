@@ -25,6 +25,7 @@ require 'capistrano/rbenv'
 require 'capistrano/puma'
 require 'capistrano/maintenance'
 require 'capistrano/sidekiq'
+require 'capistrano/rails/console'
 #require 'capistrano/sidekiq/monit'
 
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined

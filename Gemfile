@@ -55,6 +55,7 @@ group :development do
   gem 'capistrano3-puma',   require: false
   gem 'capistrano-sidekiq', require: false
   gem 'capistrano-maintenance', '~> 1.0', require: false
+  gem 'capistrano-rails-console', require: false
 end
 
 #mygems
