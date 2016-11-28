@@ -15,8 +15,11 @@
 # gem 'pg'
 #
 default: &default
+  host: localhost
   adapter: postgresql
   encoding: unicode
+  username: <%= ENV["VIVIEU_DATABASE_USERNAME"] %>
+  password: <%= ENV["VIVIEU_DATABASE_PASSWORD"] %>
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
@@ -78,8 +81,12 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+
+staging:
+  <<: *default
+  database: vivieu_staging
+
 production:
   <<: *default
   database: vivieu_production
-  username: <%= ENV["VIVIEU_DATABASE_USERNAME"] %>
-  password: <%= ENV["VIVIEU_DATABASE_PASSWORD"] %>
+
