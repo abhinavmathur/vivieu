@@ -17,12 +17,12 @@ if ENV['RAILS_ENV'] == 'staging'
   stdout_redirect "/var/www/staging.vivieu.com/shared/log/puma.stdout.log", "#{deploy_staging}/shared/log/puma.stderr.log", true
   activate_control_app "unix:/var/www/staging.vivieu.com/shared/tmp/sockets/pumactl.sock", { no_token: true }
 else
-  bind "unix:#{deploy_production}/shared/tmp/sockets/production-puma.sock"
-  pidfile "#{deploy_production}/shared/tmp/pids/puma.pid"
-  state_path "#{deploy_production}/shared/tmp/sockets/puma.state"
+  bind "unix:/var/www/vivieu.com/shared/tmp/sockets/production-puma.sock"
+  pidfile "/var/www/vivieu.com/shared/tmp/pids/puma.pid"
+  state_path "/var/www/vivieu.com/shared/tmp/sockets/puma.state"
 
-  stdout_redirect "#{deploy_production}/shared/log/puma.stdout.log", "#{deploy_production}/shared/log/puma.stderr.log", true
-  activate_control_app "unix:#{deploy_production}/shared/tmp/sockets/pumactl.sock", { no_token: true }
+  stdout_redirect "/var/www/vivieu.com/shared/log/puma.stdout.log", "#{deploy_production}/shared/log/puma.stderr.log", true
+  activate_control_app "/var/www/vivieu.com/shared/tmp/sockets/pumactl.sock", { no_token: true }
 end
 
 on_worker_boot do
