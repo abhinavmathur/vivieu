@@ -10,7 +10,7 @@
       <a class="navbar-brand baloo-logo" href="/">Vivieu</a>
     </div>
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+    <div class="" id="bs-example-navbar-collapse-2">
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
           <input type="text" class="form-control" style="width: 350px" placeholder="Search">
