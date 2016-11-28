@@ -26,7 +26,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
-gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -97,6 +96,7 @@ gem 'data-confirm-modal'
 gem 'font-awesome-rails'
 gem 'counter_culture', '~> 1.0'
 gem 'tagsinput-rails'
+
 
 
 
