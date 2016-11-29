@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161124043022) do
+ActiveRecord::Schema.define(version: 20161129173652) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,26 @@ ActiveRecord::Schema.define(version: 20161124043022) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+
+  create_table "reviews", force: :cascade do |t|
+    t.string   "title",                      default: ""
+    t.text     "description",                default: ""
+    t.string   "youtube_id",                 default: ""
+    t.string   "tags",                       default: ""
+    t.string   "amazon_product_title",       default: ""
+    t.string   "amazon_product_description", default: ""
+    t.string   "asin",                       default: ""
+    t.string   "slug"
+    t.boolean  "publish",                    default: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+    t.integer  "reviewer_id"
+  end
+
+  add_index "reviews", ["reviewer_id"], name: "index_reviews_on_reviewer_id", using: :btree
+  add_index "reviews", ["slug"], name: "index_reviews_on_slug", unique: true, using: :btree
+  add_index "reviews", ["title"], name: "index_reviews_on_title", unique: true, using: :btree
+  add_index "reviews", ["youtube_id"], name: "index_reviews_on_youtube_id", unique: true, using: :btree
 
   create_table "tags", force: :cascade do |t|
     t.string   "title",       default: ""
@@ -146,6 +166,7 @@ ActiveRecord::Schema.define(version: 20161124043022) do
   add_index "visits", ["visit_token"], name: "index_visits_on_visit_token", unique: true, using: :btree
 
   add_foreign_key "affiliate_countries", "users"
+  add_foreign_key "reviews", "users", column: "reviewer_id"
   add_foreign_key "tags", "categories"
   add_foreign_key "tags", "users", column: "owner_id"
 end

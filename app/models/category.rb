@@ -13,18 +13,32 @@
 #
 
 class Category < ActiveRecord::Base
+
+  #general
+  #--------------------------------------------------------------------------------------------
   extend FriendlyId
   friendly_id :title, use: :slugged
+  #--------------------------------------------------------------------------------------------
+
+  #relationships
+  #--------------------------------------------------------------------------------------------
   has_many :tags, dependent: :destroy
+  #--------------------------------------------------------------------------------------------
 
   #validations
+  #--------------------------------------------------------------------------------------------
   validates_presence_of :title
   validates_uniqueness_of :title
+  #--------------------------------------------------------------------------------------------
 
+  #methods
+  #--------------------------------------------------------------------------------------------
+  #friendly_id method
   def should_generate_new_friendly_id?
     title_changed?
   end
 
+  #method to sort categories
   def self.select_order(val)
     permitted_values = %w(title-desc title-asc pop-asc pop-desc rev-asc rev-desc tag-asc tag-desc)
     if permitted_values.include?(val)
@@ -45,4 +59,5 @@ class Category < ActiveRecord::Base
       self.order('title asc')
     end
   end
+  #--------------------------------------------------------------------------------------------
 end
