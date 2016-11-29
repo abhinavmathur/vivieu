@@ -12,8 +12,8 @@ class UsersController < ApplicationController
        successfully updated. You can click <a href='/users/edit'>here</a> to go back to the settings page"
       redirect_to root_path
     else
-      flash[:danger] = 'Please check the form again'
-      redirect_to edit_user_registration_path
+      flash[:danger] = @user.errors.full_messages.to_sentence
+      redirect_to edit_user_registration_path(anchor: 'affiliate-settings')
     end
   end
 

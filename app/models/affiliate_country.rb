@@ -12,10 +12,16 @@
 #
 
 class AffiliateCountry < ActiveRecord::Base
+
+  #relationships
+  #--------------------------------------------------------------------------------------------
   belongs_to :user
+  #--------------------------------------------------------------------------------------------
+
   #validations
   #--------------------------------------------------------------------------------------------
   validates_presence_of :country, :default_affiliate_tag
-  validates_uniqueness_of :country
+  validates_uniqueness_of :country,
+                          message: '^You should have unique affiliate tags for each country. Please check for duplicate countries in the Affiliate Settings section'
   #--------------------------------------------------------------------------------------------
 end

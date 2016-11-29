@@ -97,3 +97,5 @@ gem 'data-confirm-modal'
 gem 'font-awesome-rails'
 gem 'counter_culture', '~> 1.0'
 gem 'tagsinput-rails'
+gem 'custom_error_message', git: 'https://github.com/rystraum/custom-err-msg.git'
+

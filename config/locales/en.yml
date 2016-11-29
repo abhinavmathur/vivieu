@@ -32,3 +32,10 @@ en:
     title: "Vivieu - Watch video reviews made by people like you"
     description: "Vivieu.com is a video focused review website. Submit videos of products
     you bought from amazon for others to make informed decisions. It is free and easy to join."
+  activerecord:
+    errors:
+      models:
+        affiliate_country:
+          attributes:
+            country:
+              taken:
