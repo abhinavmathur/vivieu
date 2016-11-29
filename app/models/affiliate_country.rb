@@ -13,4 +13,8 @@
 
 class AffiliateCountry < ActiveRecord::Base
   belongs_to :user
+
+  validates_presence_of :country, :default_affiliate_tag
+  validates_uniqueness_of :country
+
 end
