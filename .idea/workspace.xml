@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e7731f0f-1ee3-46cc-a897-30ec0398e8bd" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/affiliate_country.rb" afterPath="$PROJECT_DIR$/app/models/affiliate_country.rb" />
     </list>
     <ignored path="vivieu.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -581,12 +580,12 @@
       <workItem from="1480289650356" duration="6127000" />
       <workItem from="1480307014512" duration="5697000" />
       <workItem from="1480351817921" duration="8897000" />
-      <workItem from="1480438110348" duration="805000" />
+      <workItem from="1480438110348" duration="1090000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="157556000" />
+    <option name="totallyTimeSpent" value="157841000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="57" y="21" width="1309" height="747" extended-state="6" />
