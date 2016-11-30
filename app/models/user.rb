@@ -65,6 +65,7 @@ class User < ActiveRecord::Base
 
   #methods
   #--------------------------------------------------------------------------------------------
+  #[updates tags after someone deletes their account]
   def update_tags
     if self.tags.any?
       self.tags.each do |tag|
@@ -73,6 +74,7 @@ class User < ActiveRecord::Base
     end
   end
 
+  #[omniauth google]
   def self.from_omniauth(auth)
     where( uid: auth.uid, email: auth.info.email).first_or_create do |user|
       user.vivieu_name = auth.info.email.to_s.split('@')[0].to_s + "'s reviews"
@@ -90,16 +92,18 @@ class User < ActiveRecord::Base
     end
   end
 
+  #[checks for roles]
   def self.roles(user)
-    if user.reviewer?
-      return 'Reviewer'
-    elsif user.admin?
+    if user.admin?
       return 'Admin'
+    elsif user.reviewer?
+      return 'Reviewer'
     else
       'Normal'
     end
   end
 
+  #[method to search users]
   def self.search(search)
     where("vivieu_name ILIKE ? OR email ILIKE ?", "%#{search}%", "%#{search}")
   end

@@ -33,12 +33,12 @@ class Category < ActiveRecord::Base
 
   #methods
   #--------------------------------------------------------------------------------------------
-  #friendly_id method
+  #[friendly_id method]
   def should_generate_new_friendly_id?
     title_changed?
   end
 
-  #method to sort categories
+  #[method to sort categories]
   def self.select_order(val)
     permitted_values = %w(title-desc title-asc pop-asc pop-desc rev-asc rev-desc tag-asc tag-desc)
     if permitted_values.include?(val)

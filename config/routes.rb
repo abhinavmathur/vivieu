@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     namespace :reviewer do
       resources :categories, only: [:index, :show]
       resources :tags, only: :create
-      resources :reviews, except: :new do
+      resources :reviews, except: [:new, :index] do
         member do
           post '/publish' => 'reviews#publish'
         end

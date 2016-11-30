@@ -28,6 +28,9 @@
                     <li><a href="#"><%= t('navbar.become_a_reviewer') %></a></li>
                 <% end %>
                 <li class="divider"></li>
+                <li>
+                  <%= link_to 'Create a Review', '#', data: { toggle: 'modal', target: '#review-modal'} %>
+                </li>
                 <li><%= link_to t('navbar.logout'), destroy_user_session_path, method: :delete %></li>
               </ul>
             </li>

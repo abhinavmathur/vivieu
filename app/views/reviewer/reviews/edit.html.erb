@@ -1,0 +1,13 @@
+<%= simple_form_for [:reviewer, @review], vaidate: true do |f| %>
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :tags %>
+    <%= f.input :youtube_id %>
+    <hr>
+    <p class="text-primary">Amazon Product Details</p>
+    <%= f.input :asin %>
+    <%= f.input :amazon_product_title %>
+    <%= f.input :amazon_product_description %>
+    <hr>
+    <%= f.button :submit %>
+<% end %>

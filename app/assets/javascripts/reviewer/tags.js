@@ -1,7 +1,3 @@
-$(document).on('ready page:change', function() {
-
-});
-
 function populate_tags(){
     var tags_array = $('#tag-field').val().split(',');
     var html_array = []
