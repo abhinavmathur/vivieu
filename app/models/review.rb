@@ -15,6 +15,7 @@
 #  created_at                 :datetime         not null
 #  updated_at                 :datetime         not null
 #  reviewer_id                :integer
+#  category_id                :integer
 #
 
 class Review < ActiveRecord::Base
@@ -28,10 +29,12 @@ class Review < ActiveRecord::Base
   #relationships
   #--------------------------------------------------------------------------------------------
   belongs_to :reviewer, class_name: 'User'
+  belongs_to :category
   #--------------------------------------------------------------------------------------------
 
   #validations
   #--------------------------------------------------------------------------------------------
-  validates_presence_of :title, :asin
+  validates_presence_of :title, :asin, :category_id
   validates_uniqueness_of :title
+  #--------------------------------------------------------------------------------------------
 end

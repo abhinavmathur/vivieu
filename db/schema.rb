@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161129173652) do
+ActiveRecord::Schema.define(version: 20161201010412) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,20 @@ ActiveRecord::Schema.define(version: 20161129173652) do
   add_index "ahoy_events", ["name", "time"], name: "index_ahoy_events_on_name_and_time", using: :btree
   add_index "ahoy_events", ["user_id", "name"], name: "index_ahoy_events_on_user_id_and_name", using: :btree
   add_index "ahoy_events", ["visit_id", "name"], name: "index_ahoy_events_on_visit_id_and_name", using: :btree
+
+  create_table "bootsy_image_galleries", force: :cascade do |t|
+    t.integer  "bootsy_resource_id"
+    t.string   "bootsy_resource_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "bootsy_images", force: :cascade do |t|
+    t.string   "image_file"
+    t.integer  "image_gallery_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string   "title",       default: ""
@@ -78,8 +92,10 @@ ActiveRecord::Schema.define(version: 20161129173652) do
     t.datetime "created_at",                                 null: false
     t.datetime "updated_at",                                 null: false
     t.integer  "reviewer_id"
+    t.integer  "category_id"
   end
 
+  add_index "reviews", ["category_id"], name: "index_reviews_on_category_id", using: :btree
   add_index "reviews", ["reviewer_id"], name: "index_reviews_on_reviewer_id", using: :btree
   add_index "reviews", ["slug"], name: "index_reviews_on_slug", unique: true, using: :btree
   add_index "reviews", ["title"], name: "index_reviews_on_title", unique: true, using: :btree
@@ -166,6 +182,7 @@ ActiveRecord::Schema.define(version: 20161129173652) do
   add_index "visits", ["visit_token"], name: "index_visits_on_visit_token", unique: true, using: :btree
 
   add_foreign_key "affiliate_countries", "users"
+  add_foreign_key "reviews", "categories"
   add_foreign_key "reviews", "users", column: "reviewer_id"
   add_foreign_key "tags", "categories"
   add_foreign_key "tags", "users", column: "owner_id"

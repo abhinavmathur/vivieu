@@ -19,4 +19,13 @@ class Reviewer::TagsController < ApplicationController
       }
     end
   end
+
+  def json_tags
+    if Category.exists?(params[:id])
+      @tags = Category.find(params[:id]).tags
+    else
+      flash[:error] = 'Invalid Category'
+      redirect_to root_path
+    end
+  end
 end

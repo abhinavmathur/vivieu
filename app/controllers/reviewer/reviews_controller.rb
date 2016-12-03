@@ -1,6 +1,6 @@
 class Reviewer::ReviewsController < ApplicationController
 
-  before_action :set_review, except: :create
+  before_action :set_review, except: [:create, :youtube_videos]
 
   def create
     @review = Review.new(review_params)
@@ -20,6 +20,7 @@ class Reviewer::ReviewsController < ApplicationController
 
   def edit
 
+
   end
 
   def update
@@ -27,7 +28,7 @@ class Reviewer::ReviewsController < ApplicationController
       flash[:success] = 'Review was updated successfully.'
       redirect_to edit_reviewer_review_path(@review)
     else
-      flash[:error] = @review.errors.full_messages.to_sentence
+      flash[:danger] = @review.errors.full_messages.to_sentence
       render :edit
     end
   end
@@ -38,6 +39,14 @@ class Reviewer::ReviewsController < ApplicationController
     redirect_to root_path
   end
 
+  def youtube_videos
+    begin
+      account = Yt::Account.new(refresh_token: current_user.refresh_token, access_token: current_user.token)
+      @videos = account.videos
+    rescue => e
+      render :json => { :errors => e.to_s }, :status => 422
+    end
+  end
   private
 
   def set_review
@@ -45,6 +54,6 @@ class Reviewer::ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:title, :description, :youtube_id, :tags, :amazon_product_title, :amazon_product_description, :asin)
+    params.require(:review).permit(:category_id, :title, :description, :youtube_id, :tags, :amazon_product_title, :amazon_product_description, :asin)
   end
 end

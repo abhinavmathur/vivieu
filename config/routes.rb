@@ -16,10 +16,17 @@ Rails.application.routes.draw do
   authenticate :user, lambda { |u| u.reviewer? || u.admin?} do
     namespace :reviewer do
       resources :categories, only: [:index, :show]
-      resources :tags, only: :create
+      resources :tags, only: :create do
+        collection do
+          get '/json_tags' => 'tags#json_tags'
+        end
+      end
       resources :reviews, except: [:new, :index] do
         member do
           post '/publish' => 'reviews#publish'
+        end
+        collection do
+          get '/youtube_videos' => 'reviews#youtube_videos'
         end
       end
     end
@@ -38,5 +45,10 @@ Rails.application.routes.draw do
       resources :users
     end
   end
+  #--------------------------------------------------------------------------------------------
+
+  #engines
+  #--------------------------------------------------------------------------------------------
+  mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   #--------------------------------------------------------------------------------------------
 end

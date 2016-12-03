@@ -23,6 +23,7 @@ class Category < ActiveRecord::Base
   #relationships
   #--------------------------------------------------------------------------------------------
   has_many :tags, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   #--------------------------------------------------------------------------------------------
 
   #validations

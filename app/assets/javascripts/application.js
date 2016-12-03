@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery-ui/widgets/autocomplete
 //= require ahoy
 //= require bootstrap-sprockets
 //= require jquery_ujs
@@ -19,6 +20,8 @@
 //= require cocoon
 //= require data-confirm-modal
 //= require bootstrap-tagsinput
+//= require twitter/typeahead.min
+//= require bootsy
 //= require turbolinks
 //= require_tree .
 
@@ -29,3 +32,5 @@ dataConfirmModal.setDefaults({
     commit: 'Continue',
     cancel: 'Cancel'
 });
+
+

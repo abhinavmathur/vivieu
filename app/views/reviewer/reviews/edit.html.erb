@@ -1,13 +1,69 @@
-<%= simple_form_for [:reviewer, @review], vaidate: true do |f| %>
-    <%= f.input :title %>
-    <%= f.input :description %>
-    <%= f.input :tags %>
-    <%= f.input :youtube_id %>
-    <hr>
-    <p class="text-primary">Amazon Product Details</p>
-    <%= f.input :asin %>
-    <%= f.input :amazon_product_title %>
-    <%= f.input :amazon_product_description %>
-    <hr>
-    <%= f.button :submit %>
-<% end %>
+<div class="row">
+  <%= simple_form_for [:reviewer, @review], validate: true do |f| %>
+      <div class="col-sm-12 col-md-6">
+
+        <%= f.input :title %>
+        <%= f.input :description, as: :bootsy %>
+        <%= f.input :tags %>
+        <%= f.input :youtube_id, as: :hidden %>
+        <hr>
+        <h4 class="text-primary text-center">Amazon Product Details</h4>
+        <%= f.input :asin %>
+        <%= f.input :amazon_product_title %>
+        <%= f.input :amazon_product_description %>
+        <hr>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <div class="jumbotron">
+          <h1>Hello, world!</h1>
+          <p>...</p>
+          <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#youtube-videos">
+            Launch demo modal
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <%= f.button :submit %>
+  <% end %>
+  </div>
+  </div>
+</div>
+
+
+<%= render 'reviewer/reviews/shared/youtube_videos' %>
+
+<script type="text/javascript" charset="utf-8">
+  var tag_id = '<%= @review.category.id %>'
+  populate_tags(tag_id);
+  function populate_tags(tag_id){
+    $.ajax({
+      method: 'GET',
+      data: tag_id,
+      url: '/reviewer/tags/json_tags.json?id='+ tag_id,
+      success: function(data){
+        var tag_array = [];
+        for(var i = 0; i < data.length; i++)
+        {
+          tag_array.push(data[i].title)
+        }
+        $('#review_tags').tokenfield({
+          autocomplete: {
+            source: tag_array,
+            delay: 100
+          },
+          showAutocompleteOnFocus: false
+        });
+      }
+    });
+  }
+
+  $('#review_tags').on('tokenfield:createtoken', function (event) {
+    var existingTokens = $(this).tokenfield('getTokens');
+    $.each(existingTokens, function(index, token) {
+      if (token.value === event.attrs.value)
+        event.preventDefault();
+    });
+  });
+
+</script>
