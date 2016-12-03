@@ -23,7 +23,7 @@ $(document).on('page:change ready', function(){
                 }
                 youtube_video_list.append('</ul>');
                 live_search();
-                //badge_click();
+                youtube_list_click();
             },
             timeout: 15000,
             error: function(jqXHR, textStatus, errorThrown) {
@@ -66,11 +66,12 @@ function live_search(){
     });
 }
 
-function badge_click()
+function youtube_list_click()
 {
-    $('.badge-click').css('cursor', 'pointer');
-    $('.badge-click').on('click', function(){
-        $('#review_youtube_id').val($(this).parent().data('id'))
-        youtube_video_modal.modal('hide')
+
+    $('.titles').on('click', function(e){
+        e.preventDefault()
+        $('#review_youtube_id').val($(this).data('id'))
+        $('#youtube-videos').modal('hide')
     });
 }
