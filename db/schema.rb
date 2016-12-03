@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161201010412) do
+ActiveRecord::Schema.define(version: 20161203055715) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 20161201010412) do
   create_table "reviews", force: :cascade do |t|
     t.string   "title",                      default: ""
     t.text     "description",                default: ""
-    t.string   "youtube_id",                 default: ""
+    t.string   "youtube_id"
     t.string   "tags",                       default: ""
     t.string   "amazon_product_title",       default: ""
     t.string   "amazon_product_description", default: ""

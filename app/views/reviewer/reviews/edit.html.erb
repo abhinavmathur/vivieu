@@ -1,26 +1,35 @@
 <div class="row">
+  <h2 class="text-center text-primary well-lg">
+    Create a Vivieu <%= link_to '#', data: { toggle: 'modal', target: '#edit-review-modal'} do %>
+        <i class="fa fa-cogs" aria-hidden="true"></i>
+    <% end %>
+  </h2>
+</div>
+<br>
+<div class="row">
   <%= simple_form_for [:reviewer, @review], validate: true do |f| %>
       <div class="col-sm-12 col-md-6">
-
-        <%= f.input :title %>
-        <%= f.input :description, as: :bootsy %>
+        <div class="youtube-view">
+          <% if @review.youtube_id.present? %>
+              <%= render 'reviewer/reviews/shared/youtube_embed', review_id: @review.youtube_id, title: @review.title %>
+          <% else %>
+              <%= render 'reviewer/reviews/shared/add_youtube_video' %>
+          <% end %>
+        </div>
+        <h3 class="text-default"><%= @review.title %></h3>
+        <br>
+        <%= f.input :title, as: :hidden %>
+        <%= f.input :description, as: :bootsy, autofocus: true %>
         <%= f.input :tags %>
         <%= f.input :youtube_id, as: :hidden %>
         <hr>
         <h4 class="text-primary text-center">Amazon Product Details</h4>
-        <%= f.input :asin %>
+        <%= f.input :asin, as: :hidden %>
         <%= f.input :amazon_product_title %>
         <%= f.input :amazon_product_description %>
         <hr>
       </div>
       <div class="col-sm-12 col-md-6">
-        <div class="jumbotron">
-          <h1>Hello, world!</h1>
-          <p>...</p>
-          <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#youtube-videos">
-            Launch demo modal
-          </button>
-        </div>
       </div>
       <div class="row">
         <div class="col-sm-12">
@@ -30,8 +39,8 @@
   </div>
 </div>
 
-
 <%= render 'reviewer/reviews/shared/youtube_videos' %>
+<%= render 'reviewer/reviews/shared/edit_review_modal', review: @review %>
 
 <script type="text/javascript" charset="utf-8">
   var tag_id = '<%= @review.category.id %>'

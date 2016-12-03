@@ -1,3 +1,5 @@
+//bootsy settings are in Initializers
+
 $(document).on('page:change ready', function(){
     var youtube_video_list = $('.youtube-video-list');
     var youtube_video_modal = $('#youtube-videos')
@@ -72,6 +74,17 @@ function youtube_list_click()
     $('.titles').on('click', function(e){
         e.preventDefault()
         $('#review_youtube_id').val($(this).data('id'))
+        replace_with_video($(this).data('id'));
         $('#youtube-videos').modal('hide')
+
     });
+}
+
+function replace_with_video(youtube_id){
+    $('.youtube-view').fadeOut(300, function() {
+        $(this).html("<iframe id='ytplayer' type='text/html' width='600' height='400'" +
+            " src='https://www.youtube.com/embed/"+ youtube_id +"' +frameborder='0'>" +
+            "</iframe><button type='button' class='btn btn-primary btn-sm' data-toggle='modal' data-target='#youtube-videos'>" +
+            "Use another video </button>").fadeIn(500)
+    })
 }

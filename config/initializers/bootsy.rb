@@ -10,7 +10,7 @@ Bootsy.setup do |config|
     html: false,
     link: false,
     image: false,
-    color: true
+    color: false
   }
   #
   # Image versions available

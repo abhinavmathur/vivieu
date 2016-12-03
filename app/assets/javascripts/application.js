@@ -25,6 +25,8 @@
 //= require turbolinks
 //= require_tree .
 
+
+//bootsy settings are in Initializers
 //Global Javascript Settings Go Here
 
 dataConfirmModal.setDefaults({

@@ -24,6 +24,10 @@ class Review < ActiveRecord::Base
   #--------------------------------------------------------------------------------------------
   extend FriendlyId
   friendly_id :title, use: :slugged
+
+  def should_generate_new_friendly_id?
+    title_changed?
+  end
   #--------------------------------------------------------------------------------------------
 
   #relationships
@@ -35,6 +39,7 @@ class Review < ActiveRecord::Base
   #validations
   #--------------------------------------------------------------------------------------------
   validates_presence_of :title, :asin, :category_id
-  validates_uniqueness_of :title
+  validates_uniqueness_of :title, message: '^This title has been taken by someone else'
+  validates_uniqueness_of :youtube_id, message: '^You cannot use the same video twice'
   #--------------------------------------------------------------------------------------------
 end
