@@ -15,7 +15,6 @@ class Reviewer::ReviewsController < ApplicationController
           render json: nil, status: :ok
         }
       end
-
     else
       flash[:error] = @review.errors.full_messages.to_sentence
       redirect_to root_path
@@ -28,13 +27,19 @@ class Reviewer::ReviewsController < ApplicationController
 
   def edit
 
-
   end
 
   def update
     if @review.update(review_params)
-      flash[:success] = 'Review was updated successfully.'
-      redirect_to edit_reviewer_review_path(@review)
+      respond_to do |format|
+        format.html {
+          flash[:success] = 'Review was updated successfully.'
+          redirect_to edit_reviewer_review_path(@review)
+        }
+        format.json {
+          render json: nil, status: :ok
+        }
+      end
     else
       flash[:danger] = @review.errors.full_messages.to_sentence
       redirect_to edit_reviewer_review_path(@review)
@@ -49,7 +54,7 @@ class Reviewer::ReviewsController < ApplicationController
 
   def youtube_videos
     begin
-      account = Yt::Account.new(refresh_token: current_user.refresh_token)
+      account = Yt::Account.new(refresh_token: current_user.refresh_token, access_token: current_user.token)
       @videos = account.videos
     rescue => e
       render :json => { :errors => e.to_s }, :status => 422

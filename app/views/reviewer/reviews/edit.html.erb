@@ -75,4 +75,29 @@
     });
   });
 
+  <% unless @review.review_published? %>
+  function submit_edit_form(form_id) {
+    var form_info = '#edit_review_' + form_id;
+    form_info = $(form_info);
+    console.log(form_info);
+    $.ajax({
+      url: '/reviewer/reviews/'+form_id,
+      type: 'PATCH',
+      dataType: 'json',
+      data: form_info.serialize(),
+      success: function (data) {
+        console.log(data);
+      },
+      error: function (xhr, err) {
+        console.log(xhr.responseText);
+      },
+    });
+    return false;
+  }
+
+  setInterval(function(){
+    submit_edit_form(<%= @review.id %>)
+  }, 5000);
+<% end %>
+
 </script>

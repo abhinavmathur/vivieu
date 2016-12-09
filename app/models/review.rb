@@ -40,6 +40,15 @@ class Review < ActiveRecord::Base
   #--------------------------------------------------------------------------------------------
   validates_presence_of :title, :asin, :category_id
   validates_uniqueness_of :title, message: '^This title has been taken by someone else'
-  validates_uniqueness_of :youtube_id, message: '^You cannot use the same video twice'
+  validates_uniqueness_of :youtube_id, message: '^You cannot use the same video twice', if: :review_published?
   #--------------------------------------------------------------------------------------------
+
+  #methods
+  #--------------------------------------------------------------------------------------------
+
+  def review_published?
+    publish?
+  end
+  #--------------------------------------------------------------------------------------------
+
 end
