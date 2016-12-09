@@ -34,5 +34,9 @@ dataConfirmModal.setDefaults({
     commit: 'Continue',
     cancel: 'Cancel'
 });
+$(document).on('page:change ready', function(){
+    //$("#sticker").sticky({topSpacing:15});
+})
+
 
 

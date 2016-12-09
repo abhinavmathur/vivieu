@@ -5,3 +5,10 @@
 textarea {
   resize: vertical; /* user can resize vertically, but width is fixed */
 }
+
+#sticker {
+  position: fixed;
+  top: 50px;
+  right: 20px;
+  z-index: 999;
+}

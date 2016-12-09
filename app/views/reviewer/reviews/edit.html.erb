@@ -1,9 +1,11 @@
 <div class="row">
-  <h2 class="text-center text-primary well-lg">
-    Create a Vivieu <%= link_to '#', data: { toggle: 'modal', target: '#edit-review-modal'} do %>
-        <i class="fa fa-cogs" aria-hidden="true"></i>
-    <% end %>
-  </h2>
+  <div class="col-sm-12">
+    <h2 class="text-center text-primary well-lg">
+      Create a Vivieu <%= link_to '#', data: { toggle: 'modal', target: '#edit-review-modal'} do %>
+          <i class="fa fa-cogs" aria-hidden="true"></i>
+      <% end %>
+    </h2>
+  </div>
 </div>
 <br>
 <div class="row">
@@ -30,6 +32,7 @@
         <hr>
       </div>
       <div class="col-sm-12 col-md-6">
+
       </div>
       <div class="row">
         <div class="col-sm-12">
@@ -39,11 +42,17 @@
   </div>
 </div>
 
+<span class="label label-success pull-right form-saved-animation"
+      id="sticker"
+      style="display: none;">Review saved successfully</span>
+
 <%= render 'reviewer/reviews/shared/youtube_videos' %>
 <%= render 'reviewer/reviews/shared/edit_review_modal', review: @review %>
 
 <script type="text/javascript" charset="utf-8">
   var tag_id = '<%= @review.category.id %>'
+  var saved_animation = $(".form-saved-animation");
+
   populate_tags(tag_id);
   function populate_tags(tag_id){
     $.ajax({
@@ -86,7 +95,8 @@
       dataType: 'json',
       data: form_info.serialize(),
       success: function (data) {
-        console.log(data);
+        $(saved_animation).show();
+        setTimeout(function() { $(saved_animation).fadeOut(1000); }, 2000);
       },
       error: function (xhr, err) {
         console.log(xhr.responseText);
@@ -97,7 +107,7 @@
 
   setInterval(function(){
     submit_edit_form(<%= @review.id %>)
-  }, 5000);
-<% end %>
+  }, 60000);
+  <% end %>
 
 </script>
