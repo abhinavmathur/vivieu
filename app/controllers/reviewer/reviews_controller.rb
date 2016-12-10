@@ -16,7 +16,7 @@ class Reviewer::ReviewsController < ApplicationController
         }
       end
     else
-      flash[:error] = @review.errors.full_messages.to_sentence
+      flash[:danger] = @review.errors.full_messages.to_sentence
       redirect_to root_path
     end
   end
@@ -54,7 +54,7 @@ class Reviewer::ReviewsController < ApplicationController
 
   def youtube_videos
     begin
-      account = Yt::Account.new(refresh_token: current_user.refresh_token, access_token: current_user.token)
+      account = Yt::Account.new(refresh_token: current_user.refresh_token)
       @videos = account.videos
     rescue => e
       render :json => { :errors => e.to_s }, :status => 422

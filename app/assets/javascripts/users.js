@@ -2,21 +2,22 @@ function initialize_user_preview()
 {
 
     var user_description_preview = $('#user-description-preview');
+    var user_description = $('#user_description')
     hide_description_box();
 
     function hide_description_box()
     {
-        if($('#user_description').val() == "")
+        if(user_description.val() == "")
         {
             user_description_preview.hide();
         }
     }
 
-    $('#user_description').keyup(function(event){
+    user_description.keyup(function(event){
         user_description_preview.show();
         user_description_preview.text($(this).val());
         hide_description_box();
-    })
+    });
 
 
     $('#user_vivieu_name').keyup(function(){

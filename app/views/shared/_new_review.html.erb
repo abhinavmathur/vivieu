@@ -8,8 +8,8 @@
       <%= simple_form_for [:reviewer, Review.new], validate: true do |f| %>
           <div class="modal-body">
             <%= f.association :category, include_blank: false, prompt: 'Choose a Category' %>
-            <%= f.input :title %>
-            <%= f.input :asin %>
+            <%= f.input :title, required: true %>
+            <%= f.input :asin, required: true %>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>

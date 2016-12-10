@@ -95,8 +95,10 @@
       dataType: 'json',
       data: form_info.serialize(),
       success: function (data) {
-        $(saved_animation).show();
-        setTimeout(function() { $(saved_animation).fadeOut(1000); }, 2000);
+        saved_animation.show();
+        setTimeout(function() {
+          console.log('hello')
+          saved_animation.fadeOut(1000); }, 2000);
       },
       error: function (xhr, err) {
         console.log(xhr.responseText);
@@ -107,7 +109,7 @@
 
   setInterval(function(){
     submit_edit_form(<%= @review.id %>)
-  }, 60000);
+  }, 10000);
   <% end %>
 
 </script>

@@ -1,11 +1,15 @@
 //bootsy settings are in Initializers
 
+
+
 $(document).on('page:change ready', function(){
     var youtube_video_list = $('.youtube-video-list');
     var youtube_video_modal = $('#youtube-videos')
+    var new_review = $('#new_review')
 
     $('#review-modal').on('shown.bs.modal', function () {
-        $('#new_review').enableClientSideValidations();
+        new_review.resetClientSideValidations();
+        new_review.enableClientSideValidations();
     })
 
     youtube_video_modal.on('show.bs.modal', function(){

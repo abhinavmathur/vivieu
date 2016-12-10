@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery-ui/widgets/autocomplete
 //= require ahoy
 //= require bootstrap-sprockets
@@ -34,9 +35,7 @@ dataConfirmModal.setDefaults({
     commit: 'Continue',
     cancel: 'Cancel'
 });
-$(document).on('page:change ready', function(){
-    //$("#sticker").sticky({topSpacing:15});
-})
+
 
 
 
