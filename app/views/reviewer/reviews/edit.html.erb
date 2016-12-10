@@ -31,8 +31,16 @@
         <%= f.input :amazon_product_description %>
         <hr>
       </div>
-      <div class="col-sm-12 col-md-6">
-
+      <div class="col-sm-12 col-md-6" id="hello-world">
+        <h3 class="text-center">Item Specifications</h3>
+        <div id='specifications-form'>
+          <%= f.simple_fields_for :specifications do |specification| %>
+              <%= render 'reviewer/reviews/specification_fields', f: specification %>
+          <% end %>
+          <div class='text-center'>
+            <%= link_to_add_association 'Add Specification +', f, :specifications, class: 'btn btn-success btn-sm' %>
+          </div>
+        </div>
       </div>
       <div class="row">
         <div class="col-sm-12">

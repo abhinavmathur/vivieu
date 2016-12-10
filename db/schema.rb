@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161203055715) do
+ActiveRecord::Schema.define(version: 20161210063627) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,6 +101,17 @@ ActiveRecord::Schema.define(version: 20161203055715) do
   add_index "reviews", ["title"], name: "index_reviews_on_title", unique: true, using: :btree
   add_index "reviews", ["youtube_id"], name: "index_reviews_on_youtube_id", unique: true, using: :btree
 
+  create_table "specifications", force: :cascade do |t|
+    t.string   "item",        default: ""
+    t.text     "description", default: ""
+    t.integer  "review_id"
+    t.boolean  "header",      default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "specifications", ["review_id"], name: "index_specifications_on_review_id", using: :btree
+
   create_table "tags", force: :cascade do |t|
     t.string   "title",       default: ""
     t.integer  "views",       default: 0
@@ -184,6 +195,7 @@ ActiveRecord::Schema.define(version: 20161203055715) do
   add_foreign_key "affiliate_countries", "users"
   add_foreign_key "reviews", "categories"
   add_foreign_key "reviews", "users", column: "reviewer_id"
+  add_foreign_key "specifications", "reviews"
   add_foreign_key "tags", "categories"
   add_foreign_key "tags", "users", column: "owner_id"
 end

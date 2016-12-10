@@ -26,7 +26,7 @@ class Reviewer::ReviewsController < ApplicationController
   end
 
   def edit
-
+    @review.specifications.build unless @review.specifications.present?
   end
 
   def update
@@ -67,6 +67,10 @@ class Reviewer::ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:category_id, :title, :description, :youtube_id, :tags, :amazon_product_title, :amazon_product_description, :asin)
+    params.require(:review).permit(:category_id, :title,
+                                   :description, :youtube_id,
+                                   :tags, :amazon_product_title,
+                                   :amazon_product_description,
+                                   :asin, specifications_attributes: [:id, :item, :description, :header, :_destroy])
   end
 end

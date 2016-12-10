@@ -34,6 +34,8 @@ class Review < ActiveRecord::Base
   #--------------------------------------------------------------------------------------------
   belongs_to :reviewer, class_name: 'User'
   belongs_to :category
+  has_many :specifications
+  accepts_nested_attributes_for :specifications, reject_if: :all_blank, reject_if: proc { |attributes| attributes['item'].blank? }, allow_destroy: true
   #--------------------------------------------------------------------------------------------
 
   #validations
