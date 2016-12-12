@@ -54,7 +54,7 @@ class Reviewer::ReviewsController < ApplicationController
 
   def youtube_videos
     begin
-      account = Yt::Account.new(refresh_token: current_user.refresh_token)
+      account = Yt::Account.new(refresh_token: current_user.refresh_token, access_token: current_user.token)
       @videos = account.videos
     rescue => e
       render :json => { :errors => e.to_s }, :status => 422
