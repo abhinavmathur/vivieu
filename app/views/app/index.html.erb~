@@ -37,7 +37,7 @@
       <% 4.times do %>
           <div class="col-sm-12 col-md-3">
             <div class="thumbnail">
-              <img src="https://placeimg.com/320/150/any" alt="">
+              <img src="http://placehold.it/320x150" alt="">
               <div class="caption">
                 <h4 class="pull-right">$74.99</h4>
                 <h4><a href="#">Third Product</a>
@@ -63,7 +63,7 @@
       <% 8.times do %>
           <div class="col-sm-12 col-md-3">
             <div class="thumbnail">
-              <img src="https://placeimg.com/320/150/any" alt="">
+              <img src="http://placehold.it/320x150" alt="">
               <div class="caption">
                 <h4 class="pull-right">$74.99</h4>
                 <h4><a href="#">Third Product</a>
