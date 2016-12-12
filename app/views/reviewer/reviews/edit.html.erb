@@ -8,6 +8,7 @@
   </div>
 </div>
 <br>
+
 <div class="row">
   <%= simple_form_for [:reviewer, @review], validate: true do |f| %>
       <div class="col-sm-12 col-md-6">
@@ -33,6 +34,7 @@
       </div>
       <div class="col-sm-12 col-md-6" id="hello-world">
         <h3 class="text-center">Item Specifications</h3>
+        <br>
         <div id='specifications-form'>
           <%= f.simple_fields_for :specifications do |specification| %>
               <%= render 'reviewer/reviews/specification_fields', f: specification %>
@@ -115,9 +117,31 @@
     return false;
   }
 
-  setInterval(function(){
-    submit_edit_form(<%= @review.id %>)
-  }, 10000);
-  <% end %>
+  var typingTimer;                //timer identifier
+  var doneTypingInterval = 3000;  //time in ms, 5 second for example
+  var doneMouseInterval = 1000;
+  var $input = $('body');
 
+  //on keyup, start the countdown
+
+  $input.on('click', function(){
+    clearTimeout(typingTimer);
+    typingTimer = setTimeout(doneTyping, doneMouseInterval);
+  })
+
+  $input.on('keyup', function () {
+    clearTimeout(typingTimer);
+    typingTimer = setTimeout(doneTyping, doneTypingInterval);
+  });
+
+  //on keydown, clear the countdown
+  $input.on('keydown', function () {
+    clearTimeout(typingTimer);
+  });
+
+  //user is "finished typing," do something
+  function doneTyping () {
+    submit_edit_form(<%= @review.id %>)
+  }
+  <% end %>
 </script>

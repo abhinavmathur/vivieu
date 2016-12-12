@@ -22,7 +22,7 @@ class Tag < ActiveRecord::Base
 
   #validations
   #--------------------------------------------------------------------------------------------
-  validates :title, uniqueness: { scope: :category_id}
+  validates :title, uniqueness: { scope: :category_id }
   validates_presence_of :title, :owner, :category_id
   #--------------------------------------------------------------------------------------------
 
