@@ -20,8 +20,9 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  welcome: "Welcome to Vivieu ! It is the first video focused, user driven review website which caters to products
-  bought from Amazon. Its free and easy to join !"
+  welcome: "Welcome to Vivieu ! Our website provides a platform for video reviewers and consumers
+  to make honest reviews about the products they buy online. We encourage people to post video focused reviews
+  to help people make the right decision while buying items online. It is free and easy to join !"
   navbar:
     about: 'About'
     logout: 'Logout'

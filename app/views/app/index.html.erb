@@ -1,7 +1,86 @@
-<div class="row">
-  <div class="col-sm-12 col-md-12">
 
+<div class="main-header">
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+      <h1 class="text-center main-header-top">Real Reviews. By Real People.</h1>
+      <h3 class="text-center main-header-text-container">
+        <p class="main-header-text">Vivieu is a platform focused on video reviews of products, created by normal people just like you.
+          We encourage people to post videos of the products they buy to help others make an informed purchase. Register for free or check the site below  !</p>
+      </h3>
+      <div class="main-header-image-container">
+        <%= image_tag('video-review.png', class: "img-responsive main-header-image-container") %>
+      </div>
+    </div>
   </div>
 </div>
-
-<h1><%= t('welcome') %></h1>
+<%= render 'shared/navbar' %>
+<div class="row">
+  <div class="col-sm-12 col-md-3">
+    <h2 class="text-center">Categories</h2>
+    <br>
+    <div class="list-group">
+      <% Category.order('title asc').each do |category| %>
+          <%= link_to category.title, '#', class: 'list-group-item' %>
+      <% end %>
+    </div>
+    <br>
+    <h3 class="text-center">Top Contributors</h3>
+  </div>
+  <div class="col-sm-12 col-md-9">
+    <div class="row">
+      <h3 class="text-center">
+        Most Viewed Reviews
+      </h3>
+      <br>
+      <% 4.times do %>
+          <div class="col-sm-12 col-md-3">
+            <div class="thumbnail">
+              <img src="http://placehold.it/320x150" alt="">
+              <div class="caption">
+                <h4 class="pull-right">$74.99</h4>
+                <h4><a href="#">Third Product</a>
+                </h4>
+                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </div>
+              <div class="ratings">
+                <p class="pull-right">31 reviews</p>
+                <p>
+                  <span class="glyphicon glyphicon-star"></span>
+                  <span class="glyphicon glyphicon-star"></span>
+                  <span class="glyphicon glyphicon-star"></span>
+                  <span class="glyphicon glyphicon-star"></span>
+                  <span class="glyphicon glyphicon-star-empty"></span>
+                </p>
+              </div>
+            </div>
+          </div>
+      <% end %>
+      <hr>
+      <h3 class="text-center">Video Reviews You Might Like</h3>
+      <br>
+      <% 8.times do %>
+          <div class="col-sm-12 col-md-3">
+            <div class="thumbnail">
+              <img src="http://placehold.it/320x150" alt="">
+              <div class="caption">
+                <h4 class="pull-right">$74.99</h4>
+                <h4><a href="#">Third Product</a>
+                </h4>
+                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </div>
+              <div class="ratings">
+                <p class="pull-right">31 reviews</p>
+                <p>
+                  <span class="glyphicon glyphicon-star"></span>
+                  <span class="glyphicon glyphicon-star"></span>
+                  <span class="glyphicon glyphicon-star"></span>
+                  <span class="glyphicon glyphicon-star"></span>
+                  <span class="glyphicon glyphicon-star-empty"></span>
+                </p>
+              </div>
+            </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -7,7 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= render 'shared/navbar' %>
+<% unless controller_name == 'app' %>
+    <%= render 'shared/navbar' %>
+<% end %>
 <%= render 'shared/flash_messages' %>
 <div class="container-fluid">
   <%= yield %>

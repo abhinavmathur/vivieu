@@ -1,0 +1,42 @@
+.vivieu-font {
+  font-family: 'Baloo', cursive;
+  color: #0091ea;
+  letter-spacing: 0.03em;
+}
+
+.main-header {
+  background-color: #81D4FA;
+  margin: auto 0;
+}
+
+.main-header-top {
+  color: #263238;
+  font-weight: 500;
+  font-size: 300%;
+  letter-spacing: -1px;
+  word-spacing: 1px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.main-header-text {
+  word-spacing: 1px;
+  line-height: 120%;
+  font-weight: 100;
+}
+
+.main-header-text-container {
+  width: 80%;
+  margin: auto;
+  padding-bottom: 10px;
+}
+
+.navbar {
+  margin-bottom: 0px !important;
+  width: 100% !important;
+  z-index: 9999;
+}
+.main-header-image-container {
+  display: block;
+  margin: 0 auto;
+}
