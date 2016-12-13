@@ -1,4 +1,3 @@
-$(document).ready(function () {
-    //enabling stickUp on the '.navbar-wrapper' class
-$('.navbar').stickUp();
+$(document).on('page:change ready', function() {
+    $('.navbar').stickUp();
 });

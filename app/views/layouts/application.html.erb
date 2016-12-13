@@ -6,11 +6,15 @@
   <%= render 'shared/stylesheets' %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<% disable_turbolinks = false %>
+<% if controller_name == 'app' %>
+    <% disable_turbolinks = true %>
+<% end %>
+<body <%= 'data-no-turbolink="true"'.html_safe if disable_turbolinks %>>
 <% unless controller_name == 'app' %>
     <%= render 'shared/navbar' %>
+    <%= render 'shared/flash_messages' %>
 <% end %>
-<%= render 'shared/flash_messages' %>
 <div class="container-fluid">
   <%= yield %>
 </div>

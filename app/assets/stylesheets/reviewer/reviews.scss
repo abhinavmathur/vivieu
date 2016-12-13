@@ -8,7 +8,8 @@ textarea {
 
 .form-saved-animation {
   position: fixed;
-  top: 40px;
+  top: 50px !important;
   right: 20px;
+  z-index: 150;
 }
 

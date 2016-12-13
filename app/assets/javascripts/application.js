@@ -23,7 +23,6 @@
 //= require bootstrap-tagsinput
 //= require twitter/typeahead.min
 //= require bootsy
-//= require turbolinks
 //= require_tree .
 
 
