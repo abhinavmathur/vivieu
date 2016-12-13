@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery.turbolinks
 //= require jquery-ui/widgets/autocomplete
 //= require ahoy
 //= require bootstrap-sprockets
@@ -26,6 +25,7 @@
 //= require_tree .
 
 
+
 //bootsy settings are in Initializers
 //Global Javascript Settings Go Here
 
@@ -34,7 +34,3 @@ dataConfirmModal.setDefaults({
     commit: 'Continue',
     cancel: 'Cancel'
 });
-
-
-
-

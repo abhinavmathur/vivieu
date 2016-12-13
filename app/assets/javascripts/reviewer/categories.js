@@ -1,4 +1,4 @@
-$(document).on('ready page:change', function() {
+$(document).on('ready turbolinks:load', function() {
     $('select[name=order-select]').change(function(e)
     {
         if($('select[name=order-select]').val() == 'title-desc')

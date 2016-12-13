@@ -1,3 +1,3 @@
-$(document).on('page:change ready', function() {
+$(document).on('turbolinks:load ready', function() {
     $('.navbar').stickUp();
 });

@@ -2,7 +2,7 @@
 
 
 
-$(document).on('page:change ready', function(){
+$(document).on('turbolinks:load ready', function(){
     var youtube_video_list = $('.youtube-video-list');
     var youtube_video_modal = $('#youtube-videos')
     var new_review = $('#new_review')
