@@ -6,12 +6,9 @@
   <%= render 'shared/stylesheets' %>
   <%= csrf_meta_tags %>
 </head>
-<% disable_turbolinks = false %>
-<% if controller_name == 'app' %>
-    <% disable_turbolinks = true %>
-<% end %>
-<body <%= 'data-no-turbolink="true"'.html_safe if disable_turbolinks %>>
-<% unless controller_name == 'app' %>
+
+<body>
+<% unless controller_name == 'app' && action_name == 'index' %>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flash_messages' %>
 <% end %>
