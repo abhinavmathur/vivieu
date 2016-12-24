@@ -5,10 +5,11 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks", registrations: 'registrations' }
   #--------------------------------------------------------------------------------------------
 
-  #application routes
+  #app routes
   #--------------------------------------------------------------------------------------------
   resources :users, only: [:show, :update]
   root 'app#index'
+  get '/sign_out' => 'app#sign_out', path: '/thankyou-and-come-back-soon!'
   #--------------------------------------------------------------------------------------------
 
   #reviewer routes
