@@ -1,19 +1,16 @@
-<% unless user_signed_in? %>
-    <div class="main-header">
-      <div class="row">
-        <div class="col-sm-12 col-md-12">
-          <h1 class="text-center main-header-top">Real Reviews. By Real People.</h1>
-          <h3 class="text-center main-header-text-container">
-            <p class="main-header-text">Vivieu is a platform focused on video reviews of products, created by normal people just like you.
-              We encourage people to post videos of the products they buy to help others make an informed purchase. Register for free or check the site below  !</p>
-          </h3>
-          <div class="main-header-image-container">
-            <%= image_tag('video-review.png', class: "img-responsive main-header-image-container") %>
-          </div>
-        </div>
+<div class="row main-header">
+    <div class="col-md-12 main-header">
+      <h1 class="text-center main-header-top">Real Reviews. By Real People.</h1>
+      <h3 class="text-center main-header-text-container">
+        <p class="main-header-text">Vivieu is a platform focused on video reviews of products, created by normal people just like you.
+          We encourage people to post videos of the products they buy to help others make an informed purchase. Register for free or check the site below  !</p>
+      </h3>
+      <div class="main-header-image-container">
+        <%= image_tag('video-review.png', class: "img-responsive main-header-image-container") %>
       </div>
     </div>
-<% end %>
+</div>
+
 <div class="row">
   <%= render 'shared/navbar' %>
   <%= render 'shared/flash_messages' %>
