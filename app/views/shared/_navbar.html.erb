@@ -35,7 +35,7 @@
               </ul>
             </li>
         <% else %>
-            <li><a href="#"><%= t('navbar.about') %></a></li>
+            <li><%= link_to t('navbar.about'), about_path %></li>
             <li><a href="#" data-toggle="modal" data-target="#login-modal"><%= t('navbar.login') %></a></li>
         <% end %>
       </ul>

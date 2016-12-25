@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   #--------------------------------------------------------------------------------------------
   resources :users, only: [:show, :update]
   root 'app#index'
-  get '/sign_out' => 'app#sign_out', path: '/thankyou-and-come-back-soon!'
+  get '/sign_out' => 'app#sign_out', path: '/thankyou-and-please-come-back-soon!'
+  get '/about' => 'app#about'
   #--------------------------------------------------------------------------------------------
 
   #reviewer routes
